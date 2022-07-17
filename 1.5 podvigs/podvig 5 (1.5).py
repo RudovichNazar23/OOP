@@ -8,9 +8,10 @@ class TriangleChecker:
         if not all(map(lambda x: type(x) in (int, float), (self.a, self.b, self.c))):
             return 1
         if not all(map(lambda x: x > 0, (self.a, self.b, self.c))):
-            return 2
+            return 1
+
         self.a, self.b, self.c = a, b, c
-        if a >= b + c or b >= a + b:
+        if a >= b + c or b >= a + c or c >= a + b:
             return 2
         return 3
 
