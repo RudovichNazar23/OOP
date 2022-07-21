@@ -3,31 +3,35 @@ class RadiusVector2D:
     MAX_COORD = 1024
 
     def __init__(self, x=0, y=0):
-        self.__x = x
-        self.__y = y
+        if type(x) in (int, float) and self.MIN_COORD < x < self.MAX_COORD:
+            self.__x = x
+        else:
+            self.__x = 0
+
+        if type(y) in (int, float) and self.MIN_COORD < y < self.MAX_COORD:
+            self.__y = y
+        else:
+            self.__y = 0
 
     @property
     def x_cor(self):
-        print(self.__x)
+        return self.__x
 
     @x_cor.setter
     def x_cor(self, x):
-        if type(x) == (int, float) and self.MIN_COORD <= x <= self.MAX_COORD:
+        if type(x) in (int, float) and self.MIN_COORD <= x <= self.MAX_COORD:
             self.__x = x
 
     @property
     def y_cord(self):
-        print(self.__y)
+        return self.__y
 
     @y_cord.setter
     def y_cord(self, y):
-        if type(y) == (int, float) and self.MIN_COORD <= y <= self.MAX_COORD:
+        if type(y) in (int, float) and self.MIN_COORD <= y <= self.MAX_COORD:
             self.__y = y
 
     @staticmethod
     def norm2(vector):
-        pass
+        return vector.__x ** 2 + vector.__y ** 2
 
-vector = RadiusVector2D(10, 20)
-vector.x_cor = 25
-vector.x_cor
