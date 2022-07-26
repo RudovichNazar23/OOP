@@ -11,7 +11,7 @@ class Bag:
     def add_thing(self, thing):
         if thing.weight < self.max_weight:
             self.__things.append(thing)
-        elif thing.weight > self.max_weight
+        elif thing.weight > self.max_weight:
             raise ValueError("cannot append thing, because extra weight !")
 
     def remove_thing(self, indx):
