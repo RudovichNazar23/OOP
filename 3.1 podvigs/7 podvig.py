@@ -11,7 +11,6 @@ class SmartPhone:
         self.apps.remove(app)
 
 
-
 class AppVK:
     def __init__(self):
         self.name = "ВКонтакте"
