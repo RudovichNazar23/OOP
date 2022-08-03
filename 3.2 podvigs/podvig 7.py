@@ -1,2 +1,3 @@
-pass
+class HandlerGET:
+    pass
 
