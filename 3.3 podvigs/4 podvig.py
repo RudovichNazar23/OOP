@@ -1,29 +1,29 @@
-import string
-
 class WordString:
-    def __init__(self, string=""):
+    def __init__(self, string=str()):
         self.__string = string
 
-    def __check_space(self):
-        return True in [c in self.__string for c in string.whitespace]
+    def __call__(self, indx, **kwargs):
+        return self.__string.split()[indx]
 
     @property
     def string(self):
         return self.__string
 
     @string.setter
-    def string(self, nw_str):
-        if type(nw_str) == str:
-            self.__string = nw_str
-        else:
-            raise TypeError("value must be str")
+    def string(self, string):
+        if type(string) == str:
+            self.__string = string
 
     def __len__(self):
-        pass
+        return len(self.__string.split())
 
     def words(self, indx):
-        pass
+        return self.__string.split()[indx]
 
-words = WordString("Hello me")
-words.string = "None"
-print(words.__dict__)
+
+words = WordString()
+words.string = "Курс по Python ООП"
+n = len(words)
+first = "" if n == 0 else words(0)
+print(words.string)
+print(f"Число слов: {n}; первое слово: {first}")
