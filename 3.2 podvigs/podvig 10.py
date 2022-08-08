@@ -9,8 +9,10 @@ class InputValues:
 
 class RenderDigit:
     def __call__(self, string):
-        try: return int(string)
-        except: return None
+        try:
+            return int(string)
+        except:
+            return None
 
 input_dg = InputValues(RenderDigit())(input)
 res = input_dg()
