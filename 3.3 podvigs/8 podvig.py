@@ -1,19 +1,18 @@
-import time
-
 class DeltaClock:
     def __init__(self, clock1, clock2):
         self.clock1 = clock1
         self.clock2 = clock2
 
     def __str__(self):
-        res = self.clock1.get_time() - self.clock2.get_time()
-        if res < 0:
-            return f"{0}: {0}: {0}"
-
-        return time.strftime('%H: %M: %S', time.gmtime(res))
+        res = self.__len__()
+        h = res // 3600
+        m = res % 3600 // 60
+        s = res % 3600 % 60
+        return f"{h:02}, {m:02}, {s:02}"
 
     def __len__(self):
-        return int(self.clock1.get_time()) - int(self.clock2.get_time())
+        res = int(self.clock1.get_time()) - int(self.clock2.get_time())
+        return res if res > 0 else 0
 
 
 class Clock:
