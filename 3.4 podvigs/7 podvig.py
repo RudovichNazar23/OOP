@@ -15,9 +15,11 @@ class Lib:
     def __sub__(self, other):
         if other in self.book_list:
             self.book_list.remove(other)
+            return self
 
         elif type(other) == int:
             self.book_list.pop(other)
+            return self
 
     def __isub__(self, other):
         if other in self.book_list:

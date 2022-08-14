@@ -1,0 +1,2 @@
+class MaxPooling:
+    pass
