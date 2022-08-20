@@ -14,3 +14,4 @@ ac = FileAcceptor("boat.jpg")
 ac_2 = FileAcceptor("ww", "bmp")
 print(ac("jpg"))
 
+
