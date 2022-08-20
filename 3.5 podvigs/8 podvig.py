@@ -113,5 +113,8 @@ class CentralBank:
     @classmethod
     def register(cls, money):
         if isinstance(money, (MoneyR, MoneyD, MoneyE)):
-            return cls.__setattr__(money.cb)
+            return cls == money
 
+mn = MoneyE()
+CentralBank.register(mn)
+print(mn.__dict__)
