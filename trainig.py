@@ -26,5 +26,5 @@ lst = [
     "5"
 ]
 
-print()
+print("HI")
 

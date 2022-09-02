@@ -1,24 +1,30 @@
+import sys
+
 class DataBase:
-    dict_db = {}
 
     def __init__(self, path):
         self.path = path
+        self.dict_db = {}
+
 
     def write(self, record):
-        pass
+        if isinstance(record, Record):
+            self.dict_db.setdefault(record, [])
+            self.dict_db[record].append(record)
 
     def read(self, pk):
-        pass
-
+        var = (x for row in self.dict_db.values() for x in row)
+        obj = tuple(filter(lambda x: x.pk == pk, var))
+        return obj[0] if len(obj) > 0 else None
 
 class Record:
-    __pk = 0
+    pk = 0
 
     @classmethod
     def __new__(cls, *args, **kwargs):
-        cls.__pk += 1
+        cls.pk += 1
         obj = super().__new__(cls)
-        setattr(obj, 'id', cls.__pk)
+        setattr(obj, 'id', cls.pk)
         return obj
 
     def __init__(self, fio, descr, old):
@@ -26,14 +32,19 @@ class Record:
         self.descr = descr
         self.old = old
 
+
+    def __eq__(self, other):
+        if isinstance(other, Record):
+            return True if hash(self) == hash(other) else False
+
+
     def __hash__(self):
-        pass
+        return hash(self.fio.lower(), self.old)
 
+db = DataBase("popa.db")
 
-exp = Record("1", "1", 1)
-print(exp.__dict__)
-
-exp_2 = Record("2", "2", 2)
-print(exp_2.__dict__)
-
+for i in lst_in:
+    args = list(map(str.strip, i.split(":")))
+    args[-1] = int(args[-1])
+    db.write(Record(*args))
 
